@@ -1,30 +1,16 @@
-## Figma Library Analytics API Examples
+## Adjusted example to extract data from 2021, 2022, and 2023
 
-A simple Python script demonstrating the Figma Library Analytics API to extract data to a CSV. In a more mature data pipeline, this could instead be inserted directly into a Data Warehouse such as Snowflake or BigQuery.
+First add the following data .env file
 
+- **FIGMA_ACCESS_TOKEN:** This is your unique Figma Personal Access Token. It can be generated from `Go to your personal menu from your avatar in https://www.figma.com/ -> Settings -> Security -> Personal access tokens -> Generate new token `. You will need to generate a new token to inherit the new `Library Analytics` permissions or equivalent. After executing the script, you can delete the token if you wish.
+- **FILE_KEY:** The file key you wish to connect to. This is found in the Design System Figma file URL after `file/` something like `6p8e19mTHzCJfRfShcRH9K`.
 
-## Prerequisites
+Then just run the following, it will take you through the process of extracting the data from Figma and generating CSV files with the results.
 
-To use the Figma Library Analytics API  workflow, you must be a full member of an Enterprise org in Figma. 
+`./script.sh`
 
-You'll also need to install the following Python packages using `pip`:  
-`pip3 install requests`  
-`pip3 install python-dotenv`  
-`pip3 install pandas`
+Results are found in the `output*` folders.
 
+---
 
-## Usage
-
-Define two environment variables in your .env file(see [Python dotenv](https://pypi.org/project/python-dotenv/) if you're new to this)
-- **FIGMA_ACCESS_TOKEN:** This is your unique Figma Personal Access Token. It can be generated from Settings-Account-Personal access tokens. You will need to generate a new token to inherit the new `Library Analytics` permissions.
-- **FILE_KEY:** The file key you wish to connect to. This is found in the Figma URL after `file/`
-
-Addtionally, define the start and end dates in the script. Figma stores 365 days worth of data.
-
-Then run `python3 extract-library-data.py` on the command line. 
-
-By default this will create four CSV files in `output/` for the given date range:
- -actions by componant  
- -actions by team
- -usages by component
- -usages by file
+See [original fork](https://github.com/figma-sa/figma-library-analytics-api-example) and [demo video](https://www.youtube.com/watch?v=ywQzqMERs5E).
